@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "WibuOnions",
-    "slug": "wibuonions",
+    "slug": "react-native-anime",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
