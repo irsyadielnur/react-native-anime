@@ -3,7 +3,7 @@ name: Otomatis Update Expo (OTA)
 on:
   push:
     branches:
-      - main # (Ganti menjadi 'master' jika branch utamamu bernama master)
+      - main
 
 jobs:
   update:
@@ -16,7 +16,7 @@ jobs:
       - name: 2. Siapkan lingkungan Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: 3. Siapkan Expo CLI
         uses: expo/expo-github-action@v8
