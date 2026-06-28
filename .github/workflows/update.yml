@@ -28,7 +28,5 @@ jobs:
         run: npm install
 
       - name: 5. Kirim Update ke HP Pengguna! 🚀
-        env:
-          COMMIT_MSG: "${{ github.event.head_commit.message }}"
         run: |
-          eas update --branch preview --message "Update otomatis dari GitHub: $COMMIT_MSG"
+          eas update --branch preview --platform android --message "Update otomatis dari GitHub: ${{ github.event.head_commit.message }}"
