@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { FavoritesProvider } from '@/context/FavoritesContext';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -47,10 +48,16 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
+      <FavoritesProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="anime/[id]" options={{ headerShown: false, animation: 'slide_from_right' }} />
+          <Stack.Screen name="auth" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="profile" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        </Stack>
+      </FavoritesProvider>
     </ThemeProvider>
   );
 }
+
