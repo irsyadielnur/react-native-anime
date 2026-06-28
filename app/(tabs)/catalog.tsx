@@ -4,16 +4,10 @@ import {
   FlatList,
   Pressable,
   ActivityIndicator,
-<<<<<<< HEAD
   ScrollView,
   View as RNView,
 } from 'react-native';
 import ChatbotWidget from '@/components/ChatbotWidget';
-=======
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
 import { useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -226,11 +220,7 @@ export default function CatalogScreen() {
   };
 
   return (
-<<<<<<< HEAD
     <RNView style={[styles.container, { backgroundColor: colors.background }]}>
-=======
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
       {/* Filters/Search Header */}
       <View style={styles.header}>
         <SearchBar
@@ -359,12 +349,8 @@ export default function CatalogScreen() {
           showsVerticalScrollIndicator={false}
         />
       )}
-<<<<<<< HEAD
       <ChatbotWidget />
     </RNView>
-=======
-    </SafeAreaView>
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
   );
 }
 

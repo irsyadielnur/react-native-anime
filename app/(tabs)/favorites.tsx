@@ -1,35 +1,24 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  FlatList,
-  Pressable,
-<<<<<<< HEAD
-  View,
-} from "react-native";
 import ChatbotWidget from "@/components/ChatbotWidget";
-=======
-  SafeAreaView,
-  View,
-} from "react-native";
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
-import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { FlatList, Pressable, StyleSheet, View } from "react-native";
 
-import { Text } from "@/components/Themed";
-import Colors from "@/constants/Colors";
-import { useColorScheme } from "@/components/useColorScheme";
-import { useFavorites } from "@/context/FavoritesContext";
 import AnimeGridItem from "@/components/AnimeGridItem";
 import SkeletonLoader from "@/components/SkeletonLoader";
+import { Text } from "@/components/Themed";
+import { useColorScheme } from "@/components/useColorScheme";
+import Colors from "@/constants/Colors";
+import { useFavorites } from "@/context/FavoritesContext";
 
-import { supabase } from "../../lib/supabase";
 import { User } from "@supabase/supabase-js";
+import { supabase } from "../../lib/supabase";
 
 export default function FavoritesScreen() {
   const router = useRouter();
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme];
-  
+
   const { favorites, isLoading } = useFavorites();
 
   // Auth State
@@ -40,7 +29,9 @@ export default function FavoritesScreen() {
       setUser(session?.user ?? null);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
 
@@ -56,57 +47,101 @@ export default function FavoritesScreen() {
   const renderEmpty = () => {
     return (
       <View style={styles.emptyContainer}>
-        <View style={[styles.iconCircle, { backgroundColor: colors.primary + "10" }]}>
-          <Ionicons name="heart-dislike-outline" size={48} color={colors.primary} />
+        <View
+          style={[
+            styles.iconCircle,
+            { backgroundColor: colors.primary + "10" },
+          ]}
+        >
+          <Ionicons
+            name="heart-dislike-outline"
+            size={48}
+            color={colors.primary}
+          />
         </View>
-        <Text style={[styles.emptyTitle, { color: colors.text }]}>Your List is Empty</Text>
-        <Text style={[styles.emptyText, { color: colors.mutedText }]}>
-          Explore the catalog and tap the heart icon on any anime to save it here for offline reference.
+        <Text style={[styles.emptyTitle, { color: colors.text }]}>
+          Your List is Empty
         </Text>
-        
+        <Text style={[styles.emptyText, { color: colors.mutedText }]}>
+          Explore the catalog and tap the heart icon on any anime to save it
+          here for offline reference.
+        </Text>
+
         <Pressable
           onPress={handleExplorePress}
           style={({ pressed }) => [
             styles.exploreButton,
-            { backgroundColor: colors.primary, opacity: pressed ? 0.9 : 1 }
+            { backgroundColor: colors.primary, opacity: pressed ? 0.9 : 1 },
           ]}
         >
           <Text style={styles.exploreButtonText}>Find Anime</Text>
-          <Ionicons name="arrow-forward" size={16} color="#FFFFFF" style={styles.arrowIcon} />
+          <Ionicons
+            name="arrow-forward"
+            size={16}
+            color="#FFFFFF"
+            style={styles.arrowIcon}
+          />
         </Pressable>
       </View>
     );
   };
 
   return (
-<<<<<<< HEAD
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-=======
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
       {/* Cloud Sync Banner for Guest Mode */}
       {!isLoading && !isPermanentUser && (
         <Pressable
           onPress={() => router.push("/auth")}
           style={({ pressed }) => [
             styles.syncBanner,
-            { backgroundColor: colors.primary + "10", borderColor: colors.primary + "30", opacity: pressed ? 0.9 : 1 }
+            {
+              backgroundColor: colors.primary + "10",
+              borderColor: colors.primary + "30",
+              opacity: pressed ? 0.9 : 1,
+            },
           ]}
         >
-          <Ionicons name="cloud-upload-outline" size={16} color={colors.primary} style={{ marginRight: 8 }} />
+          <Ionicons
+            name="cloud-upload-outline"
+            size={16}
+            color={colors.primary}
+            style={{ marginRight: 8 }}
+          />
           <Text style={[styles.syncBannerText, { color: colors.text }]}>
-            Guest Mode. <Text style={{ color: colors.primary, fontWeight: "800" }}>Sign In</Text> to sync lists!
+            Guest Mode.{" "}
+            <Text style={{ color: colors.primary, fontWeight: "800" }}>
+              Sign In
+            </Text>{" "}
+            to sync lists!
           </Text>
-          <Ionicons name="chevron-forward" size={14} color={colors.primary} style={{ marginLeft: "auto" }} />
+          <Ionicons
+            name="chevron-forward"
+            size={14}
+            color={colors.primary}
+            style={{ marginLeft: "auto" }}
+          />
         </Pressable>
       )}
 
       {/* Cloud Synced Bar for Permanently Authenticated User */}
       {!isLoading && isPermanentUser && (
-        <View style={[styles.userHeader, { borderColor: colors.border, backgroundColor: colors.card }]}>
+        <View
+          style={[
+            styles.userHeader,
+            { borderColor: colors.border, backgroundColor: colors.card },
+          ]}
+        >
           <View style={styles.userInfo}>
-            <Ionicons name="cloud-done-outline" size={16} color="#10B981" style={{ marginRight: 6 }} />
-            <Text style={[styles.userEmail, { color: colors.text }]} numberOfLines={1}>
+            <Ionicons
+              name="cloud-done-outline"
+              size={16}
+              color="#10B981"
+              style={{ marginRight: 6 }}
+            />
+            <Text
+              style={[styles.userEmail, { color: colors.text }]}
+              numberOfLines={1}
+            >
               Synced: {user?.email}
             </Text>
           </View>
@@ -114,10 +149,12 @@ export default function FavoritesScreen() {
             onPress={() => supabase.auth.signOut()}
             style={({ pressed }) => [
               styles.signOutButton,
-              { opacity: pressed ? 0.7 : 1 }
+              { opacity: pressed ? 0.7 : 1 },
             ]}
           >
-            <Text style={[styles.signOutText, { color: colors.primary }]}>Sign Out</Text>
+            <Text style={[styles.signOutText, { color: colors.primary }]}>
+              Sign Out
+            </Text>
           </Pressable>
         </View>
       )}
@@ -129,13 +166,17 @@ export default function FavoritesScreen() {
       ) : (
         <FlatList
           data={favorites}
-          keyExtractor={(item, index) => item?.mal_id?.toString() || index.toString()}
+          keyExtractor={(item, index) =>
+            item?.mal_id?.toString() || index.toString()
+          }
           numColumns={2}
           contentContainerStyle={[
             styles.listContainer,
-            favorites.length === 0 && styles.listContainerEmpty
+            favorites.length === 0 && styles.listContainerEmpty,
           ]}
-          columnWrapperStyle={favorites.length > 0 ? styles.columnWrapper : undefined}
+          columnWrapperStyle={
+            favorites.length > 0 ? styles.columnWrapper : undefined
+          }
           renderItem={({ item }) => {
             if (!item) return null;
             return <AnimeGridItem anime={item} />;
@@ -144,12 +185,8 @@ export default function FavoritesScreen() {
           showsVerticalScrollIndicator={false}
         />
       )}
-<<<<<<< HEAD
       <ChatbotWidget />
     </View>
-=======
-    </SafeAreaView>
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
   );
 }
 

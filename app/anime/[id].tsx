@@ -13,10 +13,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-<<<<<<< HEAD
 import ChatbotWidget from "@/components/ChatbotWidget";
-=======
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
 
 import SkeletonLoader from "@/components/SkeletonLoader";
 import { Text, View } from "@/components/Themed";
@@ -734,14 +731,10 @@ export default function AnimeDetailScreen() {
                         {new Date(comment.created_at).toLocaleDateString()}
                       </Text>
                     </View>
-<<<<<<< HEAD
                     <Text
                       style={[styles.commentCardContent, { color: colors.text }]}
                       numberOfLines={2}
                     >
-=======
-                    <Text style={[styles.commentCardContent, { color: colors.text }]}>
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
                       {comment.content}
                     </Text>
                   </View>
@@ -774,10 +767,7 @@ export default function AnimeDetailScreen() {
           </Pressable>
         </View>
       </View>
-<<<<<<< HEAD
       <ChatbotWidget />
-=======
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
     </KeyboardAvoidingView>
   );
 }

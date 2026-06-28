@@ -197,7 +197,6 @@ export const jikanApi = {
   },
 
   /**
-<<<<<<< HEAD
    * Search for anime optimized for chatbot relevance matching
    */
   async searchAnimeForChat(query: string): Promise<JikanResponse<Anime[]>> {
@@ -207,8 +206,6 @@ export const jikanApi = {
   },
 
   /**
-=======
->>>>>>> 4df04350b6c1eb4a036ab6ca001613d6c7b05f0b
    * Get all anime genres
    */
   async getGenres(): Promise<JikanResponse<AnimeGenre[]>> {
