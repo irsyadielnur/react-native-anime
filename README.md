@@ -19,7 +19,7 @@ Fitur yang telah dibuat:
 - Anime Comment (guest & login)
 
 install aplikasi mobile (android) pada link ini, jika ingin mencoba:
-https://expo.dev/accounts/irsyadielnur/projects/react-native-anime/builds/10ab258d-8e86-45d4-9fd3-b125fd17e477
+https://expo.dev/accounts/irsyadielnur/projects/react-native-anime/builds/d2ef9d41-81d8-437a-904d-ac03bcab1b2a
 
 Trims.
 
